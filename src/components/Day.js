@@ -6,7 +6,7 @@ export default function Day(props) {
     "3": {
       start_time: 3,
       end_time: 5,
-      task: 'pickup'
+      task: 'Pickup'
     }
   }
   const daySchedule = generateDaySchedule(tasks);
