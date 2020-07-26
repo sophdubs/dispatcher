@@ -1,4 +1,5 @@
 import React from "react";
+import Task from "../components/Task";
 
 const generateHourColumn = () => {
   const column = [];
@@ -8,10 +9,16 @@ const generateHourColumn = () => {
   return column;
 }
 
-const generateDaySchedule = () => {
+const generateDaySchedule = (tasks) => {
   const schedule = [];
   for (let i = 0; i < 24; i++) {
-    schedule.push(<li class="time-slot"><p>+</p></li>);
+    if (tasks[i]) {
+      const {start_time, end_time, task} = tasks[i];
+      schedule.push(<Task start_time={start_time} end_time={end_time} task={task}/>);
+      i += end_time - start_time - 1;
+    } else {
+      schedule.push(<li class="time-slot"><p>+</p></li>);
+    }
   }
   return schedule;
 }

@@ -3,7 +3,7 @@ import Day from "./Day";
 import { generateHourColumn } from "../helpers/helpers";
 
 export default function Week(props) {
-  const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(weekday => <Day day={weekday} />)
+  const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(weekday => <Day day={weekday} />)
   const hourColumn = generateHourColumn();
   return (
     <div className="week">

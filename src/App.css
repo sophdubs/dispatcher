@@ -2,7 +2,6 @@
   width: 95vw;
   text-align: center;
   margin: 2vh auto;
-  
 }
 
 .hour-column {
@@ -33,7 +32,6 @@
 .week-table li {
   width: 12vw;
   height: 6vh;
-  background: white;
   border: 1px solid rgb(102, 101, 101);
 }
 
@@ -65,4 +63,13 @@
   cursor: pointer;
 }
 
+.task {
+  background: rgba(21, 208, 65, 0.543);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.task p {
+  margin: 0;
+}
