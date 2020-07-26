@@ -28,7 +28,8 @@ function App() {
       <Nav 
         setDriver={setDriver}
         setWeek={setWeek}
-        week = {state.week}
+        week= {state.week}
+        driver= {state.driver}
       />
       <Week />
     </div>

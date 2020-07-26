@@ -15,12 +15,12 @@ export default function Nav(props) {
         <ul className="navbar-nav mr-auto">
           <li className="nav-item dropdown">
             <a href="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Drivers
+              Driver {props.driver}
             </a>
             <ul className="dropdown-menu">
-              <li className="dropdown-item">Driver1</li>
-              <li className="dropdown-item">Driver2</li>
-              <li className="dropdown-item">Driver3</li>
+              <li className="dropdown-item" onClick={()=>props.setDriver(1)}>Driver 1</li>
+              <li className="dropdown-item" onClick={()=>props.setDriver(2)}>Driver 2</li>
+              <li className="dropdown-item" onClick={()=>props.setDriver(3) }>Driver 3</li>
             </ul>
           </li>
           <li>
