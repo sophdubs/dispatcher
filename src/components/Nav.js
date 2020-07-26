@@ -1,11 +1,10 @@
 import React from "react";
 
 export default function Nav(props) {
+  console.log('-----my props: ------');
+  console.log(props);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-      <a className="navbar-brand" href="#">Dispatcher</a>
-     
-
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item dropdown">
@@ -19,9 +18,9 @@ export default function Nav(props) {
             </ul>
           </li>
           <li>
-            <button>{'<'}</button>
-            <span>Week 1</span>
-            <button>{'>'}</button>
+            <button onClick={()=>props.setWeek(props.week - 1)}>{'<'}</button>
+            <span>Week {props.week}</span>
+            <button onClick={()=>props.setWeek(props.week + 1)}>{'>'}</button>
           </li>
         </ul>
         <div className="nav-item dropdown">
