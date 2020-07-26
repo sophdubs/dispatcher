@@ -1,8 +1,14 @@
 import React from "react";
 
 export default function Nav(props) {
-  console.log('-----my props: ------');
-  console.log(props);
+  const incrementWeek = () => {
+   props.setWeek(props.week === 52 ? 1 : props.week + 1);
+  }
+
+  const decrementWeek = () => {
+    props.setWeek(props.week === 1 ? 52 : props.week - 1);
+   }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark">
       <div className="collapse navbar-collapse">
@@ -18,9 +24,9 @@ export default function Nav(props) {
             </ul>
           </li>
           <li>
-            <button onClick={()=>props.setWeek(props.week - 1)}>{'<'}</button>
+            <button onClick={decrementWeek}>{'<'}</button>
             <span>Week {props.week}</span>
-            <button onClick={()=>props.setWeek(props.week + 1)}>{'>'}</button>
+            <button onClick={incrementWeek}>{'>'}</button>
           </li>
         </ul>
         <div className="nav-item dropdown">
