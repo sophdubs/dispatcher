@@ -1,0 +1,68 @@
+.week {
+  width: 95vw;
+  text-align: center;
+  margin: 2vh auto;
+  
+}
+
+.hour-column {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hour-column li {
+  position: relative;
+  text-align: right;
+  width: 4vw;
+  height: 6vh;
+}
+
+.hour-column p {
+  position: absolute;
+  right: 0.5vw;
+  top: 0.5vh;
+}
+
+.week-table {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.week-table li {
+  width: 12vw;
+  height: 6vh;
+  background: white;
+  border: 1px solid rgb(102, 101, 101);
+}
+
+.week-table .day-name {
+  background: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-inline-item {
+  margin: 0 !important;
+}
+
+.time-slot {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-slot p {
+  margin: 0;
+}
+
+.time-slot:hover {
+  color: black;
+  background: lightblue;
+  cursor: pointer;
+}
+
+

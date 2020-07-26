@@ -9,7 +9,7 @@ export default function Week(props) {
     <div className="week">
       <ul class="list-inline">
         <li class="list-inline-item">
-          <ul>
+          <ul class="hour-column">
             {hourColumn}
           </ul>
         </li>

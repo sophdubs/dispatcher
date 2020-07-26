@@ -6,8 +6,8 @@ export default function Day(props) {
   return (
     <>
     <li class="list-inline-item">
-      <ul>
-        {props.day}
+      <ul class="week-table">
+        <li class="day-name">{props.day}</li>
         { daySchedule }
       </ul>
     </li>
