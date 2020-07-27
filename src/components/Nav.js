@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../GlobalContext";
 
-export default function Nav(props) {
+export default function Nav() {
+  const { state, setState } = useContext(GlobalContext);
+
   const incrementWeek = () => {
-   props.setWeek(props.week === 52 ? 1 : props.week + 1);
+    const week = state.week === 52 ? 1 : state.week + 1;
+    setState({...state, week})
   }
 
   const decrementWeek = () => {
-    props.setWeek(props.week === 1 ? 52 : props.week - 1);
-   }
+    const week = state.week === 1 ? 52 : state.week - 1;
+    setState({...state, week});
+  }
+
+  const setDriver = (driver) => {
+    setState({...state, driver});
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-dark">
@@ -15,17 +24,17 @@ export default function Nav(props) {
         <ul className="navbar-nav mr-auto">
           <li className="nav-item dropdown">
             <a href="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Driver {props.driver}
+              Driver {state.driver}
             </a>
             <ul className="dropdown-menu">
-              <li className="dropdown-item" onClick={()=>props.setDriver(1)}>Driver 1</li>
-              <li className="dropdown-item" onClick={()=>props.setDriver(2)}>Driver 2</li>
-              <li className="dropdown-item" onClick={()=>props.setDriver(3) }>Driver 3</li>
+              <li className="dropdown-item" onClick={()=>setDriver(1)}>Driver 1</li>
+              <li className="dropdown-item" onClick={()=>setDriver(2)}>Driver 2</li>
+              <li className="dropdown-item" onClick={()=>setDriver(3)}>Driver 3</li>
             </ul>
           </li>
           <li>
             <button onClick={decrementWeek}>{'<'}</button>
-            <span>Week {props.week}</span>
+            <span>Week {state.week}</span>
             <button onClick={incrementWeek}>{'>'}</button>
           </li>
         </ul>
