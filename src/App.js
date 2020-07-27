@@ -61,20 +61,15 @@ function App() {
   return (
     <div className="App">
       <GlobalContext.Provider value={{state, setState}}>
-        <Nav 
-          setDriver={setDriver}
-          setWeek={setWeek}
-          week= {state.week}
-          driver= {state.driver}
-        />
-        {/* <Week 
+        <Nav/>
+        <Week 
           setDay={setDay}
           week={state.week}
           driver={state.driver}
           schedule={state.schedule}
           setSelectedTimeSlot={setSelectedTimeSlot}
         />
-        <New state={state} /> */}
+        {/* <New state={state} /> */}
       </GlobalContext.Provider>
     </div>
   );

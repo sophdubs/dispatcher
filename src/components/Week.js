@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useContext } from "react";
+import { GlobalContext } from "../GlobalContext";
 import Day from "./Day";
 import { generateHourColumn } from "../helpers/helpers";
 
 export default function Week(props) {
-  const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(weekday => <Day day={weekday} schedule={props.schedule} week={props.week} driver={props.driver} setDay={()=> props.setDay(weekday)} setSelectedTimeSlot={props.setSelectedTimeSlot}/>)
+  const { state, setState } = useContext(GlobalContext);
+
+  const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(weekday => <Day day={weekday}/>)
   const hourColumn = generateHourColumn();
   return (
     <div className="week">

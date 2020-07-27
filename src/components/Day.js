@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GlobalContext } from "../GlobalContext";
 import { generateDaySchedule, fetchDayTasksForDriver, generateCompatibleEndTimes, showNewTaskForm } from "../helpers/helpers"
 
 export default function Day(props) {
-  const onClickTimeSlot = (e) => {
-    props.setDay();
-    const startTime = parseInt(e.target.dataset.time);
-    // props.setSelectedTimeSlot(startTime);
-    const endTimes = generateCompatibleEndTimes(startTime, props);
-    // props.setState({selectedTimeSlot: startTime, day: props.day})
-    showNewTaskForm(startTime, endTimes);
-  }
+  const { state, setState } = useContext(GlobalContext);
 
-  const tasks = fetchDayTasksForDriver(props.schedule, props.week, props.day, props.driver)
+  const onClickTimeSlot = (e) => {
+    // Grab selected time slot
+    const selectedTimeSlot = parseInt(e.target.dataset.time);
+    // Set day && Set selected timeslot 
+    setState({...state, day: props.day, selectedTimeSlot});
+  }
+  
+  const tasks = fetchDayTasksForDriver(state.schedule, state.week, props.day, state.driver);
   const daySchedule = generateDaySchedule(tasks, onClickTimeSlot);
+  
   return (
     <>
     <li class="list-inline-item">
