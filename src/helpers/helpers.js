@@ -17,7 +17,7 @@ const generateDaySchedule = (tasks, onClickTimeSlot) => {
       schedule.push(<Task start_time={start_time} end_time={end_time} task={task}/>);
       i += end_time - start_time - 1;
     } else {
-      schedule.push(<li class="time-slot" data-time={i} onClick={onClickTimeSlot}>+</li>);
+      schedule.push(<li class="time-slot" data-time={i} onClick={onClickTimeSlot(i)}>+</li>);
     }
   }
   return schedule;
