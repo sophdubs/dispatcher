@@ -65,7 +65,7 @@ function App() {
         driver={state.driver}
         schedule={state.schedule}
       />
-      <New />
+      <New state={state}/>
     </div>
   );
 }
