@@ -1,5 +1,6 @@
 import React from "react";
 import Task from "../components/Task";
+import New from "../components/New";
 
 const generateHourColumn = () => {
   const column = [];
@@ -17,7 +18,7 @@ const generateDaySchedule = (tasks, onClickTimeSlot) => {
       schedule.push(<Task start_time={start_time} end_time={end_time} task={task}/>);
       i += end_time - start_time - 1;
     } else {
-      schedule.push(<li class="time-slot" data-time={i} onClick={onClickTimeSlot(i)}>+</li>);
+      schedule.push(<li class="time-slot" data-time={i} data-toggle="modal" data-target="#exampleModalLong" onClick={onClickTimeSlot}>+</li>);
     }
   }
   return schedule;
@@ -33,4 +34,13 @@ const fetchDayTasksForDriver = (schedule, week, day, driver) => {
   return tasks;
 }
 
-export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver }
+const generateCompatibleEndTimes = (startTime, state) => {
+  return [4, 5, 6, 7];
+}
+
+const showNewTaskForm = (startTime, endTimes) => {
+  console.log('haiiii');
+  return true;
+}
+
+export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimes, showNewTaskForm }

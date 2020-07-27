@@ -49,6 +49,7 @@ export default function New(props) {
                 </div>
               </div>
             </div>
+            <p>{JSON.stringify(props.state)}</p>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button type="button" class="btn btn-secondary">Save</button>

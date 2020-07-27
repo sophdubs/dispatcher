@@ -7,6 +7,7 @@ function App() {
   const [state, setState] = useState({
     day: null,
     driver: 1,
+    selectedTimeSlot: null,
     week: 1,
     schedule: {
       driver1: {
@@ -51,6 +52,10 @@ function App() {
     setState({...state, driver});
   }
 
+  const setSelectedTimeSlot = selectedTimeSlot => {
+    setState({...state, selectedTimeSlot});
+  }
+
   return (
     <div className="App">
       <Nav 
@@ -64,8 +69,9 @@ function App() {
         week={state.week}
         driver={state.driver}
         schedule={state.schedule}
+        setSelectedTimeSlot={setSelectedTimeSlot}
       />
-      <New state={state}/>
+      <New state={state} />
     </div>
   );
 }
