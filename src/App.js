@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 import Nav from './components/Nav';
-import Week from "./components/Week";
+import Week from './components/Week';
+import New from './components/New';
 function App() {
   const [state, setState] = useState({
     day: null,
@@ -64,6 +65,7 @@ function App() {
         driver={state.driver}
         schedule={state.schedule}
       />
+      <New />
     </div>
   );
 }
