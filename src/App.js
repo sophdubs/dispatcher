@@ -23,6 +23,13 @@ function App() {
               end_time: 11,
               task: "Delivery"
             }
+          },
+          Wednesday: {
+            18: {
+              start_time: 18,
+              end_time: 20,
+              task: "Other"
+            }
           }
         }
       },
