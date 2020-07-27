@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../GlobalContext";
 
 export default function New(props) {
+  const { state, setState } = useContext(GlobalContext); 
+
   return (
     <>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
@@ -49,7 +52,7 @@ export default function New(props) {
                 </div>
               </div>
             </div>
-            <p>{JSON.stringify(props.state)}</p>
+            <p>{JSON.stringify(state)}</p>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
               <button type="button" class="btn btn-secondary">Save</button>

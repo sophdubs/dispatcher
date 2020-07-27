@@ -42,34 +42,12 @@ function App() {
     }
   });
 
-  const setWeek = week => {
-    setState({...state, week});
-  }
-
-  const setDay = day => {
-    setState({...state, day});
-  }
-
-  const setDriver = driver => {
-    setState({...state, driver});
-  }
-
-  const setSelectedTimeSlot = selectedTimeSlot => {
-    setState({...state, selectedTimeSlot});
-  }
-
   return (
     <div className="App">
       <GlobalContext.Provider value={{state, setState}}>
         <Nav/>
-        <Week 
-          setDay={setDay}
-          week={state.week}
-          driver={state.driver}
-          schedule={state.schedule}
-          setSelectedTimeSlot={setSelectedTimeSlot}
-        />
-        {/* <New state={state} /> */}
+        <Week/>
+        <New/>
       </GlobalContext.Provider>
     </div>
   );
