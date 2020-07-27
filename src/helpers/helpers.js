@@ -9,7 +9,7 @@ const generateHourColumn = () => {
   return column;
 }
 
-const generateDaySchedule = (tasks) => {
+const generateDaySchedule = (tasks, setDay) => {
   const schedule = [];
   for (let i = 0; i < 24; i++) {
     if (tasks[i]) {
@@ -17,7 +17,7 @@ const generateDaySchedule = (tasks) => {
       schedule.push(<Task start_time={start_time} end_time={end_time} task={task}/>);
       i += end_time - start_time - 1;
     } else {
-      schedule.push(<li class="time-slot"><p>+</p></li>);
+      schedule.push(<li class="time-slot" onClick={setDay}><p>+</p></li>);
     }
   }
   return schedule;

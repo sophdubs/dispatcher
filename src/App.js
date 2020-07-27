@@ -6,7 +6,29 @@ function App() {
   const [state, setState] = useState({
     day: null,
     driver: 1,
-    week: 1
+    week: 1,
+    schedule: {
+      driver1: {
+        Week1: {
+          Monday: {
+            1: {
+              start_time: 1,
+              end_time: 3,
+              task: "Pickup"
+            }
+          },
+          Tuesday: {
+            9: {
+              start_time: 9,
+              end_time: 11,
+              task: "Delivery"
+            }
+          }
+        }
+      },
+      driver2: {},
+      driver3: {}
+    }
   });
 
   const setWeek = week => {
@@ -21,8 +43,6 @@ function App() {
     setState({...state, driver});
   }
 
-  
-
   return (
     <div className="App">
       <Nav 
@@ -31,7 +51,12 @@ function App() {
         week= {state.week}
         driver= {state.driver}
       />
-      <Week />
+      <Week 
+        setDay={setDay}
+        week={state.week}
+        driver={state.driver}
+        schedule={state.schedule}
+      />
     </div>
   );
 }
