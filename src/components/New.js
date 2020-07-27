@@ -1,65 +1,80 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
+import { generateCompatibleEndTimeOptions, parseTimeString } from "../helpers/helpers";
 
 export default function New(props) {
   const { state, setState } = useContext(GlobalContext); 
 
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    const endTime = e.target['end-time'].value;
+    const task = e.target.task.value;
+    console.log({endTime, task});
+  }
+
+  const options = generateCompatibleEndTimeOptions(state);
+
   return (
-    <>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-        Launch demo modal
-      </button>
-
-
-      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">New Task</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div className="form">
+    <div class="modal fade" id="newTaskForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">New Task</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form className="form" onSubmit={onFormSubmit}>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Start Time</label>
+                    <span class="input-group-text" id="driver">Driver</span>
                   </div>
-                  <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>4pm</option>
+                  <input type="text" class="form-control"  value={state.driver}></input>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="week">Week</span>
+                  </div>
+                  <input type="text" class="form-control" value={state.week}></input>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="day">Day</span>
+                  </div>
+                  <input type="text" class="form-control" value={state.day}></input>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="start-time">Start Time</span>
+                  </div>
+                  <input type="text" class="form-control" value={parseTimeString(state.selectedTimeSlot)}></input>
+                </div>
+              
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="end-time">End Time</label>
+                  </div>
+                  <select class="custom-select form-control" id="end-time">
+                    {options}
                   </select>
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect02">End Time</label>
+                    <label class="input-group-text" for="task">Task</label>
                   </div>
-                  <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>5pm</option>
-                    <option>6pm</option>
-                    <option>7pm</option>
-                  </select>
-                </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Task</label>
-                  </div>
-                  <select class="custom-select" id="inputGroupSelect01">
+                  <select className="custom-select form-control" id="task">
                     <option selected>Pickup Goods</option>
                     <option>Deliver Goods</option>
                     <option>Other</option>
                   </select>
                 </div>
-              </div>
-            </div>
-            <p>{JSON.stringify(state)}</p>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-secondary">Save</button>
-            </div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-secondary">Save</button>
+            </form>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

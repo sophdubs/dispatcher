@@ -18,13 +18,14 @@ const generateDaySchedule = (tasks, onClickTimeSlot) => {
       schedule.push(<Task start_time={start_time} end_time={end_time} task={task}/>);
       i += end_time - start_time - 1;
     } else {
-      schedule.push(<li class="time-slot" data-time={i} data-toggle="modal" data-target="#exampleModalLong" onClick={onClickTimeSlot}>+</li>);
+      schedule.push(<li class="time-slot" data-time={i} data-toggle="modal" data-target="#newTaskForm" onClick={onClickTimeSlot}>+</li>);
     }
   }
   return schedule;
 }
 
 const fetchDayTasksForDriver = (schedule, week, day, driver) => {
+  console.log({schedule, week, driver, day});
   let tasks;
   if (schedule[`driver${driver}`][`Week${week}`]) {
     tasks = schedule[`driver${driver}`][`Week${week}`][day] || {};
@@ -34,13 +35,20 @@ const fetchDayTasksForDriver = (schedule, week, day, driver) => {
   return tasks;
 }
 
-const generateCompatibleEndTimes = (startTime, state) => {
-  return [4, 5, 6, 7];
+const parseTimeString = time => {
+  return time > 12 ? `${time - 12}pm` : `${time}am`;
 }
 
-const showNewTaskForm = (startTime, endTimes) => {
-  console.log('haiiii');
-  return true;
+const generateCompatibleEndTimeOptions= (state) => {
+  const todayTasks = fetchDayTasksForDriver(state.schedule, state.week, state.day, state.driver);
+  const options = [];
+  let possibleEndTime = parseInt(state.selectedTimeSlot);
+  while (possibleEndTime <= 24 && !todayTasks[possibleEndTime]) {
+    options.push(<option value={possibleEndTime + 1}>{parseTimeString(possibleEndTime + 1)}</option>);
+    possibleEndTime++;
+  }
+  return options;
 }
 
-export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimes, showNewTaskForm }
+
+export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString }
