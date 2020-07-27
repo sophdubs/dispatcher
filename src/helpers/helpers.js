@@ -23,4 +23,14 @@ const generateDaySchedule = (tasks, setDay) => {
   return schedule;
 }
 
-export { generateDaySchedule, generateHourColumn }
+const fetchDayTasksForDriver = (schedule, week, day, driver) => {
+  let tasks;
+  if (schedule[`driver${driver}`][`Week${week}`]) {
+    tasks = schedule[`driver${driver}`][`Week${week}`][day] || {};
+  } else {
+    tasks = {};
+  }
+  return tasks;
+}
+
+export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver }
