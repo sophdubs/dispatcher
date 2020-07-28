@@ -33,12 +33,7 @@ export default function Edit() {
     const selectedTask = null;
     setState({...state, day, selectedTimeSlot, selectedTask});
     $('#editTaskForm').modal('hide');
-
   }
-
-  
-  // const selectedTask = fetchSelectedTask(state);
-  // console.log(selectedTask);
 
   const endOptions = generateCompatibleEndTimeOptions(state);
  
