@@ -34,16 +34,37 @@ const fetchDayTasksForDriver = (schedule, week, day, driver) => {
 }
 
 const parseTimeString = time => {
-  return time > 12 ? `${time - 12}pm` : `${time}am`;
+  if (time === 12) return '12pm';
+  if (time === 0 || time % 12 === 0) return '12am';
+  return time > 12 ? `${time % 12}pm` : `${time}am`;
 }
 
 const generateCompatibleEndTimeOptions= (state) => {
   const todayTasks = fetchDayTasksForDriver(state.schedule, state.week, state.day, state.driver);
   const options = [];
-  let possibleEndTime = parseInt(state.selectedTimeSlot);
-  while (possibleEndTime <= 24 && !todayTasks[possibleEndTime]) {
+  let possibleEndTime = state.selectedTask ? parseInt(state.selectedTask.end_time) : parseInt(state.selectedTimeSlot);
+
+  while (possibleEndTime < 24 && !todayTasks[possibleEndTime]) {
     options.push(<option value={possibleEndTime + 1}>{parseTimeString(possibleEndTime + 1)}</option>);
     possibleEndTime++;
+  }
+  return options;
+}
+
+const generateCompatibleStartTimeOptions = (state) => {
+  const options = [];
+  const todayTasks = fetchDayTasksForDriver(state.schedule, state.week, state.day, state.driver);
+  let earlierTask = 0;
+  for (let i = state.selectedTimeSlot - 1; i >= 0; i--) {
+    if (todayTasks[i]) {
+      earlierTask = todayTasks[i].end_time;
+      break;
+    }
+  }
+  
+  while (earlierTask <= state.selectedTimeSlot - 1) {
+    options.push(<option value={earlierTask}>{parseTimeString(earlierTask)}</option>);
+    earlierTask ++;
   }
   return options;
 }
@@ -82,7 +103,8 @@ const createNewTask = (endTime, task, state, location) => {
 const wipeSelectedFields = (state, setState) => {
   const day = null;
   const selectedTimeSlot = null;
-  setState({...state, day, selectedTimeSlot});
+  const selectedTask = null;
+  setState({...state, day, selectedTimeSlot, selectedTask});
 };
 
 const fetchSelectedTask = (day, week, driver, selectedTimeSlot, state) => {
@@ -103,4 +125,4 @@ const getCurrentWeek = () => {
   return Math.ceil((((now - oneJan) / 86400000) + oneJan.getDay()+1)/7);
 }
 
-export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask, getCurrentWeek }
+export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask, getCurrentWeek, generateCompatibleStartTimeOptions }

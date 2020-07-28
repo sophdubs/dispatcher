@@ -18,9 +18,9 @@ export default function New() {
 
     wipeSelectedFields(state, setState);
 
-    const day = null;
-    const selectedTimeSlot = null;
-    setState({...state, day, selectedTimeSlot});
+    // const day = null;
+    // const selectedTimeSlot = null;
+    // setState({...state, day, selectedTimeSlot});
     $('#newTaskForm').modal('hide');
     // Toggle form close
   }

@@ -6,17 +6,19 @@ import New from './components/New';
 import Edit from './components/Edit';
 import Header from './components/Header';
 import { GlobalContext } from "../src/GlobalContext";
+import { getCurrentWeek } from "./helpers/helpers";
 
 function App() {
+  const week = getCurrentWeek();
   const [state, setState] = useState({
     day: null,
     driver: 1,
     selectedTimeSlot: null,
     selectedTask: null,
-    week: 1,
+    week: week,
     schedule: {
       driver1: {
-        Week1: {
+        [`Week${week}`]: {
           Monday: {
             1: {
               start_time: 1,
