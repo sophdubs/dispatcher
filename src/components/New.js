@@ -15,14 +15,8 @@ export default function New() {
     const newTask = createNewTask(endTime, task, state, location);
     
     addTaskToSchedule(newTask, state, setState);
-
     wipeSelectedFields(state, setState);
-
-    // const day = null;
-    // const selectedTimeSlot = null;
-    // setState({...state, day, selectedTimeSlot});
     $('#newTaskForm').modal('hide');
-    // Toggle form close
   }
 
   const options = generateCompatibleEndTimeOptions(state);
