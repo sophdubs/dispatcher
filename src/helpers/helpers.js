@@ -97,4 +97,10 @@ const deleteTask = (state, setState) => {
   })
 }
 
-export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask }
+const getCurrentWeek = () => {
+  const now = new Date();
+  const oneJan = new Date(now.getFullYear(), 0, 1);
+  return Math.ceil((((now - oneJan) / 86400000) + oneJan.getDay()+1)/7);
+}
+
+export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask, getCurrentWeek }

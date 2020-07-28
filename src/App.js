@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Week from './components/Week';
 import New from './components/New';
 import Edit from './components/Edit';
+import Header from './components/Header';
 import { GlobalContext } from "../src/GlobalContext";
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
     <div className="App">
       <GlobalContext.Provider value={{state, setState}}>
         <Nav/>
+        <Header/>
         <Week/>
         <New/>
         <Edit/>

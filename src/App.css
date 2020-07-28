@@ -3,7 +3,6 @@
 .navbar {
   background: #1f398f;
   padding: 1vw;
-  margin-bottom: 6vh;
 }
 
 .logo {
@@ -59,12 +58,41 @@
   background: #1f398f69;
 }
 
+/* HEADER STYLES: */
+.header {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 3vh 0;
+  padding: 0;
+  font-family: 'Recursive', sans-serif;
+  color: #1f398f;
+  font-size: 1.3vw;
+}
+
+.header li {
+  text-align: center;
+  padding: 0 4vw;
+}
+
+.header li:hover {
+  cursor: pointer;
+}
+
+.skip-input {
+  width: 3vw;
+  margin-right: 1vw;
+}
+
 /* WEEK STYLES: */
 .week {
   font-family: 'Recursive', sans-serif;
   width: 95vw;
   text-align: center;
   margin: 2vh auto;
+  margin-right: 4vw;
+  
 }
 
 .hour-column {
