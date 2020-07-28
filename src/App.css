@@ -77,13 +77,13 @@
   position: relative;
   text-align: right;
   width: 4vw;
-  height: 6vh;
+  height: 8vh;
 }
 
 .hour-column p {
   position: absolute;
   right: 0.5vw;
-  top: 0.2vh;
+  top: 1.3vh;
 }
 
 .week-table {
@@ -94,8 +94,11 @@
 
 .week-table li {
   width: 12vw;
-  height: 6vh;
-  border: 1px solid rgb(102, 101, 101);
+  height: 8vh;
+  outline: 1px solid rgb(102, 101, 101);
+  
+  /* outline-offset: -1px; */
+
 }
 
 .week-table .day-name {
@@ -104,6 +107,8 @@
   align-items: center;
   justify-content: center;
   font-size:1.5vw;
+  margin: 0;
+  border-bottom: none;
 }
 
 .list-inline-item {
@@ -125,12 +130,8 @@
 }
 
 
-
-
-
-
+/* TASK STYLES: */
 .task {
-  background: rgba(21, 208, 65, 0.543);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,8 +139,27 @@
 
 .task:hover {
   cursor: pointer;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.851); 
+}
+
+.task h4 {
+  margin: 0;
+  font-size: 2.1vh;
 }
 
 .task p {
   margin: 0;
+  font-size: 1.5vh;
+}
+
+.Dtask {
+  background:rgb(223, 190, 223); 
+}
+
+.Otask {
+  background: rgb(252, 211, 135);
+}
+
+.Ptask {
+  background: rgb(172, 240, 172);
 }

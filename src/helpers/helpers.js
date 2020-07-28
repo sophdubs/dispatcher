@@ -13,8 +13,8 @@ const generateDaySchedule = (tasks, onClickTimeSlot, onClickTask) => {
   const schedule = [];
   for (let i = 0; i < 24; i++) {
     if (tasks[i]) {
-      const {start_time, end_time, task} = tasks[i];
-      schedule.push(<Task onClickTask={onClickTask} start_time={start_time} end_time={end_time} task={task}/>);
+      const {start_time, end_time, task, location} = tasks[i];
+      schedule.push(<Task onClickTask={onClickTask} start_time={start_time} end_time={end_time} task={task} location={location}/>);
       i += end_time - start_time - 1;
     } else {
       schedule.push(<li class="time-slot" data-time={i} data-toggle="modal" data-target="#newTaskForm" onClick={onClickTimeSlot}>+</li>);
@@ -24,7 +24,6 @@ const generateDaySchedule = (tasks, onClickTimeSlot, onClickTask) => {
 }
 
 const fetchDayTasksForDriver = (schedule, week, day, driver) => {
-  console.log({schedule, week, driver, day});
   let tasks;
   if (schedule[`driver${driver}`][`Week${week}`]) {
     tasks = schedule[`driver${driver}`][`Week${week}`][day] || {};
@@ -70,11 +69,12 @@ const addTaskToSchedule = (newTask, state, setState) => {
   });
 };
 
-const createNewTask = (endTime, task, state) => {
+const createNewTask = (endTime, task, state, location) => {
   const newTask = {
     start_time: state.selectedTimeSlot,
     end_time: parseInt(endTime),
-    task
+    task,
+    location
   };
   return newTask;
 }

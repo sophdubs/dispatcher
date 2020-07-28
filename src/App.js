@@ -20,21 +20,24 @@ function App() {
             1: {
               start_time: 1,
               end_time: 3,
-              task: "Pickup Goods"
+              task: "Pickup Goods",
+              location: "Toronto"
             }
           },
           Tuesday: {
             9: {
               start_time: 9,
               end_time: 11,
-              task: "Deliver Goods"
+              task: "Deliver Goods",
+              location: "Ottawa"
             }
           },
           Wednesday: {
             18: {
               start_time: 18,
               end_time: 20,
-              task: "Other"
+              task: "Other",
+              location: "Montreal"
             }
           }
         }

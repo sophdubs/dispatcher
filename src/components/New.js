@@ -11,7 +11,8 @@ export default function New() {
     
     const endTime = e.target['end-time'].value;
     const task = e.target.task.value;
-    const newTask = createNewTask(endTime, task, state);
+    const location = e.target.location.value;
+    const newTask = createNewTask(endTime, task, state, location);
     
     addTaskToSchedule(newTask, state, setState);
 
@@ -80,6 +81,12 @@ export default function New() {
                     <option>Deliver Goods</option>
                     <option>Other</option>
                   </select>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="location">Location</span>
+                  </div>
+                  <input type="text" class="form-control" placeholder="enter city" name="location"></input>
                 </div>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-secondary">Save</button>
