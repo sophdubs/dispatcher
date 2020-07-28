@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
-import { generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, wipeSelectedFields, createNewTask } from "../helpers/helpers";
+import { generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, wipeSelectedFields, createNewTask, fetchSelectedTask, deleteTask } from "../helpers/helpers";
 import $ from 'jquery';
 
 export default function Edit() {
@@ -24,8 +24,24 @@ export default function Edit() {
     // // Toggle form close
   }
 
-  const options = generateCompatibleEndTimeOptions(state);
+  const onDelete = (e) => {
+    console.log(e);
+    console.log(state);
+    deleteTask(state, setState);
+    const day = null;
+    const selectedTimeSlot = null;
+    const selectedTask = null;
+    setState({...state, day, selectedTimeSlot, selectedTask});
+    $('#editTaskForm').modal('hide');
 
+  }
+
+  
+  // const selectedTask = fetchSelectedTask(state);
+  // console.log(selectedTask);
+
+  const endOptions = generateCompatibleEndTimeOptions(state);
+ 
   return (
     <div class="modal fade" id="editTaskForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -69,7 +85,7 @@ export default function Edit() {
                     <label class="input-group-text" for="end-time">End Time</label>
                   </div>
                   <select class="custom-select form-control" id="end-time">
-                    {options}
+                    {endOptions}
                   </select>
                 </div>
                 <div class="input-group mb-3">
@@ -82,6 +98,7 @@ export default function Edit() {
                     <option>Other</option>
                   </select>
                 </div>
+                <button type="button" class="btn btn-danger" onClick={onDelete}>Delete</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-secondary">Save</button>
             </form>

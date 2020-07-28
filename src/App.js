@@ -11,6 +11,7 @@ function App() {
     day: null,
     driver: 1,
     selectedTimeSlot: null,
+    selectedTask: null,
     week: 1,
     schedule: {
       driver1: {

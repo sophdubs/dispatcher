@@ -85,4 +85,16 @@ const wipeSelectedFields = (state, setState) => {
   setState({...state, day, selectedTimeSlot});
 };
 
-export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields }
+const fetchSelectedTask = (day, week, driver, selectedTimeSlot, state) => {
+  const task = state.schedule[`driver${driver}`][`Week${week}`][day][selectedTimeSlot];
+  return task;
+}
+
+const deleteTask = (state, setState) => {
+  setState(state => {
+    delete state.schedule[`driver${state.driver}`][`Week${state.week}`][`${state.day}`][state.selectedTimeSlot];
+    return state;
+  })
+}
+
+export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask }

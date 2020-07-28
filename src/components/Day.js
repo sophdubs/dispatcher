@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from "../GlobalContext";
-import { generateDaySchedule, fetchDayTasksForDriver, generateCompatibleEndTimes, showNewTaskForm } from "../helpers/helpers"
+import { generateDaySchedule, fetchDayTasksForDriver, generateCompatibleEndTimes, showNewTaskForm, fetchSelectedTask } from "../helpers/helpers"
 import $ from 'jquery';
 
 
@@ -22,10 +22,10 @@ export default function Day(props) {
     }
     const selectedTimeSlot = taskElem.dataset.start;
     const day = props.day;
-
-    setState({...state, selectedTimeSlot, day});
+    const selectedTask = fetchSelectedTask(day, state.week, state.driver, selectedTimeSlot, state);
+    setState({...state, selectedTimeSlot, day, selectedTask});
   }
-  
+
   const tasks = fetchDayTasksForDriver(state.schedule, state.week, props.day, state.driver);
   const daySchedule = generateDaySchedule(tasks, onClickTimeSlot, onClickTask);
   
