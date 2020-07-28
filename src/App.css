@@ -1,3 +1,4 @@
+
 /* NAV STYLES: */
 .navbar {
   background: #1f398f;
@@ -95,10 +96,8 @@
 .week-table li {
   width: 12vw;
   height: 8vh;
-  outline: 1px solid rgb(102, 101, 101);
-  
-  /* outline-offset: -1px; */
-
+  outline: 1px solid black;
+  outline-offset:0.5px;
 }
 
 .week-table .day-name {
@@ -108,7 +107,6 @@
   justify-content: center;
   font-size:1.5vw;
   margin: 0;
-  border-bottom: none;
 }
 
 .list-inline-item {
@@ -129,15 +127,19 @@
   cursor: pointer;
 }
 
-
 /* TASK STYLES: */
-.task {
+li .task {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
+  outline: 2px solid black;
+  outline-offset: -1px;
 }
 
 .task:hover {
+  z-index: 10;
   cursor: pointer;
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.851); 
 }
