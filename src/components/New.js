@@ -1,15 +1,27 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
-import { generateCompatibleEndTimeOptions, parseTimeString } from "../helpers/helpers";
+import { generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, wipeSelectedFields, createNewTask } from "../helpers/helpers";
+import $ from 'jquery';
 
 export default function New(props) {
   const { state, setState } = useContext(GlobalContext); 
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    
     const endTime = e.target['end-time'].value;
     const task = e.target.task.value;
-    console.log({endTime, task});
+    const newTask = createNewTask(endTime, task, state);
+    
+    addTaskToSchedule(newTask, state, setState);
+
+    wipeSelectedFields(state, setState);
+
+    const day = null;
+    const selectedTimeSlot = null;
+    setState({...state, day, selectedTimeSlot});
+    $('#newTaskForm').modal('hide');
+    // Toggle form close
   }
 
   const options = generateCompatibleEndTimeOptions(state);

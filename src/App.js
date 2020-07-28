@@ -18,14 +18,14 @@ function App() {
             1: {
               start_time: 1,
               end_time: 3,
-              task: "Pickup"
+              task: "Pickup Goods"
             }
           },
           Tuesday: {
             9: {
               start_time: 9,
               end_time: 11,
-              task: "Delivery"
+              task: "Deliver Goods"
             }
           },
           Wednesday: {

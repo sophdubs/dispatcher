@@ -1,6 +1,6 @@
 import React from "react";
 import Task from "../components/Task";
-import New from "../components/New";
+
 
 const generateHourColumn = () => {
   const column = [];
@@ -50,5 +50,40 @@ const generateCompatibleEndTimeOptions= (state) => {
   return options;
 }
 
+const addTaskToSchedule = (newTask, state, setState) => {
+  setState(state => {
+    if (state.schedule[`driver${state.driver}`][`Week${state.week}`]) {
+      if(state.schedule[`driver${state.driver}`][`Week${state.week}`][`${state.day}`]) {
+        state.schedule[`driver${state.driver}`][`Week${state.week}`][`${state.day}`][`${state.selectedTimeSlot}`] = newTask;
+      } else {
+        state.schedule[`driver${state.driver}`][`Week${state.week}`][`${state.day}`] = {
+          [`${state.selectedTimeSlot}`]: newTask
+        }
+      }
+    } else {
+      state.schedule[`driver${state.driver}`][`Week${state.week}`] = {
+        [`${state.day}`]: {
+          [`${state.selectedTimeSlot}`]: newTask
+        }
+      }
+    }
+    return state;
+  });
+};
 
-export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString }
+const createNewTask = (endTime, task, state) => {
+  const newTask = {
+    start_time: state.selectedTimeSlot,
+    end_time: parseInt(endTime),
+    task
+  };
+  return newTask;
+}
+
+const wipeSelectedFields = (state, setState) => {
+  const day = null;
+  const selectedTimeSlot = null;
+  setState({...state, day, selectedTimeSlot});
+};
+
+export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields }

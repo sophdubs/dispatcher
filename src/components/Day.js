@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { GlobalContext } from "../GlobalContext";
 import { generateDaySchedule, fetchDayTasksForDriver, generateCompatibleEndTimes, showNewTaskForm } from "../helpers/helpers"
 
+
 export default function Day(props) {
   const { state, setState } = useContext(GlobalContext);
 
