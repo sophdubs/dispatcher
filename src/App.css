@@ -2,6 +2,7 @@
 .navbar {
   background: #1f398f;
   padding: 1vw;
+  margin-bottom: 6vh;
 }
 
 .logo {
@@ -53,25 +54,20 @@
 }
 
 .navbar .dropdown-item:hover {
-cursor: pointer;
-background: #1f398f69;
+  cursor: pointer;
+  background: #1f398f69;
 }
 
-
-
-
-
-
-
-
-
+/* WEEK STYLES: */
 .week {
+  font-family: 'Recursive', sans-serif;
   width: 95vw;
   text-align: center;
   margin: 2vh auto;
 }
 
 .hour-column {
+  font-size: 1vw;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -87,7 +83,7 @@ background: #1f398f69;
 .hour-column p {
   position: absolute;
   right: 0.5vw;
-  top: 0.5vh;
+  top: 0.2vh;
 }
 
 .week-table {
@@ -103,10 +99,11 @@ background: #1f398f69;
 }
 
 .week-table .day-name {
-  background: grey;
+  background: #1f398f4a;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size:1.5vw;
 }
 
 .list-inline-item {
@@ -118,13 +115,19 @@ background: #1f398f69;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 2vw;
 }
 
 .time-slot:hover {
   color: black;
-  background: lightblue;
+  background: rgb(255, 255, 160);
   cursor: pointer;
 }
+
+
+
+
+
 
 .task {
   background: rgba(21, 208, 65, 0.543);
