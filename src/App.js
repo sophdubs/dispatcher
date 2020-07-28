@@ -3,6 +3,7 @@ import './App.css';
 import Nav from './components/Nav';
 import Week from './components/Week';
 import New from './components/New';
+import Edit from './components/Edit';
 import { GlobalContext } from "../src/GlobalContext";
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Nav/>
         <Week/>
         <New/>
+        <Edit/>
       </GlobalContext.Provider>
     </div>
   );

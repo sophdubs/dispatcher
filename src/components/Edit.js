@@ -3,39 +3,40 @@ import { GlobalContext } from "../GlobalContext";
 import { generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, wipeSelectedFields, createNewTask } from "../helpers/helpers";
 import $ from 'jquery';
 
-export default function New() {
+export default function Edit() {
   const { state, setState } = useContext(GlobalContext); 
 
   const onFormSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     
-    const endTime = e.target['end-time'].value;
-    const task = e.target.task.value;
-    const newTask = createNewTask(endTime, task, state);
+    // const endTime = e.target['end-time'].value;
+    // const task = e.target.task.value;
+    // const newTask = createNewTask(endTime, task, state);
     
-    addTaskToSchedule(newTask, state, setState);
+    // addTaskToSchedule(newTask, state, setState);
 
-    wipeSelectedFields(state, setState);
+    // wipeSelectedFields(state, setState);
 
-    const day = null;
-    const selectedTimeSlot = null;
-    setState({...state, day, selectedTimeSlot});
-    $('#newTaskForm').modal('hide');
-    // Toggle form close
+    // const day = null;
+    // const selectedTimeSlot = null;
+    // setState({...state, day, selectedTimeSlot});
+    // $('#newTaskForm').modal('hide');
+    // // Toggle form close
   }
 
   const options = generateCompatibleEndTimeOptions(state);
 
   return (
-    <div class="modal fade" id="newTaskForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal fade" id="editTaskForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">New Task</h5>
+            <h5 class="modal-title">Edit Task</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          <p>{JSON.stringify(state)}</p>
           <div class="modal-body">
             <form className="form" onSubmit={onFormSubmit}>
                 <div class="input-group mb-3">
