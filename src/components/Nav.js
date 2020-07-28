@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
+import logo from "../logo.png";
+
 
 export default function Nav() {
   const { state, setState } = useContext(GlobalContext);
@@ -19,11 +21,19 @@ export default function Nav() {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-dark">
-      <div className="collapse navbar-collapse">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item dropdown">
-            <a href="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <nav className="navbar navbar-expand-lg">
+      <div className="collapse navbar-collapse d-flex justify-content-between">
+        <div className="nav-item one-third">
+          <img src="https://www.roserocket.com/static/media/logo-white.1576a2ec.svg" className="navbar-brand logo" alt="rose-rocket"/>
+        </div>
+        <div className="nav-item week-select one-third">
+          <button onClick={decrementWeek}>&#x25C0;</button>
+          <span>Week {state.week}</span>
+          <button onClick={incrementWeek}>&#x25B6;</button>
+        </div>
+        <div className="nav-item d-flex flex-row one-third dropdowns">
+          <div className="dropdown driver-dd">
+            <a href="" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
               Driver {state.driver}
             </a>
             <ul className="dropdown-menu">
@@ -31,24 +41,20 @@ export default function Nav() {
               <li className="dropdown-item" onClick={()=>setDriver(2)}>Driver 2</li>
               <li className="dropdown-item" onClick={()=>setDriver(3)}>Driver 3</li>
             </ul>
-          </li>
-          <li>
-            <button onClick={decrementWeek}>{'<'}</button>
-            <span>Week {state.week}</span>
-            <button onClick={incrementWeek}>{'>'}</button>
-          </li>
-        </ul>
-        <div className="nav-item dropdown">
-            <a href="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Download Schedule
-            </a>
-            <ul className="dropdown-menu">
-              <li className="dropdown-item">2 days</li>
-              <li className="dropdown-item">4 days</li>
-              <li className="dropdown-item">7 days</li>
-            </ul>
+          </div>
+          <div className="dropdown download-dd">
+              <a href="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Download
+              </a>
+              <ul className="dropdown-menu">
+                <li className="dropdown-item">2 days</li>
+                <li className="dropdown-item">4 days</li>
+                <li className="dropdown-item">7 days</li>
+                <li className="dropdown-item">14 days</li>
+                <li className="dropdown-item">28 days</li>              
+              </ul>
+          </div>
         </div>
-        
       </div>
     </nav>
   )

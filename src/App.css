@@ -1,3 +1,70 @@
+/* NAV STYLES: */
+.navbar {
+  background: #1f398f;
+  padding: 1vw;
+}
+
+.logo {
+  width: 12vw;
+  height: auto;
+}
+
+.one-third {
+  width: 33vw;
+}
+
+.week-select {
+  color: white;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.week-select button {
+  background: #1f398f;
+  border-radius: 50%;
+  color: white;
+  padding: 0.5vw;
+  font-size: 1vw;
+  border: 2px solid white;
+}
+
+.week-select button:hover {
+  cursor: pointer;
+}
+
+.week-select button:focus {
+  outline: none;
+}
+
+.week-select span {
+  font-family: 'Recursive', sans-serif;
+  margin: 0;
+  padding: 0 1vw;
+}
+
+.dropdowns {
+  font-family: 'Recursive', sans-serif;
+  font-size: 1.5vw;
+  justify-content: flex-end;
+}
+
+.dropdowns a {
+  color: white;
+}
+
+.navbar .dropdown-item:hover {
+cursor: pointer;
+background: #1f398f69;
+}
+
+
+
+
+
+
+
+
+
 .week {
   width: 95vw;
   text-align: center;
