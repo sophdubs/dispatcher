@@ -10,8 +10,8 @@ export default function AvailabilityDetails() {
   
   return (
     <div class="modal fade" id="availabilityDetails" tabindex="-1">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content availability-modal">
           <div class="modal-header">
             <h5 class="modal-title">Availability Details</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -19,7 +19,7 @@ export default function AvailabilityDetails() {
             </button>
           </div>
           <div class="modal-body">
-            <ul>
+            <ul class="driver-details-ul">
               {driverDetails}
             </ul>
           </div>

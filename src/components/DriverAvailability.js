@@ -12,33 +12,26 @@ export default function DriverAvailability(props) {
 
   return (
     <li class="driver-details">
-      <h1>{`Driver${props.driver}`}</h1>
-   
-      {/* Case: Driver has no tasks that day */}
-      { conflictingTasks.length === 0 &&
-        <div className="driver-details-body">
+      <div>
+        <h1>{`Driver${props.driver}`}</h1>
+        { conflictingTasks.length === 0 ?
           <h2 className="no-conflict-header">No Conflicts</h2>
-          <h3>{`${Object.keys(props.tasks).length} tasks scheduled`}</h3>
-          <ul>
-            {taskListItems}
-          </ul>
-        </div>
-      }
-
-      { conflictingTasks.length !== 0 && 
-        <div className="driver-details-body">
+          :
           <h2 className="conflict-header">{conflictingTasks.length} Conflict(s)</h2>
-          <h3>{`${Object.keys(props.tasks).length} tasks scheduled`}</h3>
-          <ul>
-            {taskListItems}
-          </ul>
+        }
+        <h3>{`${Object.keys(props.tasks).length} tasks scheduled`}</h3>
       </div>
-      }
-
-      <button>{`Book With Driver${props.driver}`}</button>
-      { conflictingTasks.length > 0 &&
-        <p className="warning">{`Warning! Booking with this driver will result in cancelling all conflicting tasks`}</p>
-      }
+   
+      <ul class="driver-task-list">
+        {taskListItems}
+      </ul>
+ 
+      <div>
+        { conflictingTasks.length > 0 &&
+          <p className="warning">{`Warning! This action will cancel all conflicting tasks`}</p>
+        }
+        <button type="button" className="btn btn-secondary book-driver">{`Book With Driver${props.driver}`}</button>
+      </div>
     </li>
   
   )

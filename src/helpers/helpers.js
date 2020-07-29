@@ -172,7 +172,8 @@ const findConflictingTasks = (state, tasks) => {
 const generateTaskListItems = (tasks, conflictingTasks) => {
   const listItems = [];
   for (const task of Object.values(tasks)) {
-    listItems.push(<li className={conflictingTasks.includes(task.startTime) ? "details-task conflict" : "details-task"}>
+    console.log();
+    listItems.push(<li className={conflictingTasks.includes(`${task.start_time}`) ? "details-task conflict" : "details-task"}>
       <h1>{task.task}</h1>
       <p>{task.location}</p>
       <p>{`${parseTimeString(task.start_time)}-${parseTimeString(task.end_time)}`}</p>

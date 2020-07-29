@@ -194,3 +194,86 @@ li .task {
 .Ptask {
   background: rgb(172, 240, 172);
 }
+
+.availability-modal {
+  width: 100%;
+}
+
+.driver-details-ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+}
+
+.driver-details {
+  font-family:'Recursive', sans-serif;
+  text-align: center;
+  background:#bfbebe56;
+  width: 32%;
+  border-radius:10px;
+  padding: 1vw;
+}
+
+.driver-details h1 {
+  font-size: 1.5vw;
+}
+
+.no-conflict-header {
+  font-size: 1.3vw;
+  color: green;
+}
+
+.driver-details-body h2, h3 {
+  font-size: 1.3vw;
+}
+
+.conflict-header {
+  font-size: 1.3vw;
+  color: rgb(180, 6, 6);
+}
+
+.warning {
+  font-size: 1vw;
+  color: rgb(180, 6, 6);
+  margin-bottom: 0;
+}
+
+.driver-task-list {
+  list-style: none;
+  font-size: 1.3vw;
+  text-align: center;
+  padding: 0;
+  width: 80%;
+  margin: 2vh auto;
+}
+
+.driver-task-list li {
+  background: white;
+  text-align: center;
+  margin: 0.3vw;
+}
+
+.driver-task-list .conflict {
+  background: rgba(180, 6, 6, 0.166);
+}
+
+.details-task h1 {
+  font-size: 1.3vw;
+  margin: 0;
+}
+
+.details-task p {
+  font-size: 1.2vw;
+  margin: 0;
+}
+
+.driver-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
