@@ -105,7 +105,8 @@ const wipeSelectedFields = (state, setState) => {
   const day = null;
   const selectedTimeSlot = null;
   const selectedTask = null;
-  setState({...state, day, selectedTimeSlot, selectedTask});
+  const checkAvailabilityTask = {};
+  setState({...state, day, selectedTimeSlot, selectedTask, checkAvailabilityTask});
 };
 
 const fetchSelectedTask = (day, week, driver, selectedTimeSlot, state) => {
@@ -158,10 +159,10 @@ const generateDriverDetails = (state, driver) => {
 const findConflictingTasks = (state, tasks) => {
   const conflicts = [];
   if(state.checkAvailabilityTask) {
-    const startTime = state.checkAvailabilityTask.start_time;
-    const endTime = state.checkAvailabilityTask.end_time;
+    const startTime = parseInt(state.checkAvailabilityTask.start_time);
+    const endTime = parseInt(state.checkAvailabilityTask.end_time);
     for (const [time, task] of Object.entries(tasks)) {
-      if ((task.start_time >= startTime && task.start_time <= endTime) || (task.end_time >= startTime && task.end_time <= endTime)) {
+      if ((startTime === task.start_time) || (startTime < task.start_time && endTime > task.start_time) || (startTime > task.start_time && startTime < task.end_time)){
         conflicts.push(time);
       }
     }
@@ -182,4 +183,14 @@ const generateTaskListItems = (tasks, conflictingTasks) => {
   return listItems;
 }
 
-export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask, getCurrentWeek, generateCompatibleStartTimeOptions, generateWeekOptions, generateDayOptions, generateAllTimeOptions, generateDriverDetails, findConflictingTasks, generateTaskListItems }
+const deleteConflictingTasks = (setState, driver, week, day, conflictingTasks) => {
+  setState(state => {
+    for (const taskTime of conflictingTasks) {
+      delete state.schedule[`driver${driver}`][`Week${week}`][`${day}`][taskTime];
+    }
+    return state;
+  })
+}
+
+
+export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask, getCurrentWeek, generateCompatibleStartTimeOptions, generateWeekOptions, generateDayOptions, generateAllTimeOptions, generateDriverDetails, findConflictingTasks, generateTaskListItems, deleteConflictingTasks }

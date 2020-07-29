@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
-import { findConflictingTasks, generateTaskListItems } from "../helpers/helpers";
+import { findConflictingTasks, generateTaskListItems, deleteConflictingTasks, createNewTask, addTaskToSchedule, wipeSelectedFields } from "../helpers/helpers";
 import $ from 'jquery';
 
 export default function DriverAvailability(props) {
@@ -8,7 +8,37 @@ export default function DriverAvailability(props) {
 
   const conflictingTasks = findConflictingTasks(state, props.tasks);
   const taskListItems = generateTaskListItems(props.tasks, conflictingTasks);
-  console.log(conflictingTasks);
+  
+  const onBookDriver  = (e) => {
+    
+    // Delete conflicting tasks if there are any
+    if (conflictingTasks.length !== 0) {
+      deleteConflictingTasks(setState, props.driver, state.checkAvailabilityTask.week, state.checkAvailabilityTask.day, conflictingTasks);
+    }
+    
+    // Create new task
+    const newTask = {
+      start_time: state.checkAvailabilityTask.start_time,
+      end_time: state.checkAvailabilityTask.end_time,
+      task: state.checkAvailabilityTask.task,
+      location: state.checkAvailabilityTask.location
+    }
+
+    const driver = props.driver;
+    const week = state.checkAvailabilityTask.week;
+    const day = state.checkAvailabilityTask.day;
+    const selectedTimeSlot = state.checkAvailabilityTask.start_time;
+    setState({...state, driver, week, day, selectedTimeSlot});
+
+    addTaskToSchedule(newTask, state, setState);
+
+    
+    wipeSelectedFields(state, setState);
+    
+    setState({...state, driver: props.driver, checkAvailabilityTask: null, week});
+   
+    $('#availabilityDetails').modal('hide');
+  }
 
   return (
     <li class="driver-details">
@@ -30,7 +60,7 @@ export default function DriverAvailability(props) {
         { conflictingTasks.length > 0 &&
           <p className="warning">{`Warning! This action will cancel all conflicting tasks`}</p>
         }
-        <button type="button" className="btn btn-secondary book-driver">{`Book With Driver${props.driver}`}</button>
+        <button type="button" onClick={onBookDriver} className="btn btn-secondary book-driver">{`Book With Driver${props.driver}`}</button>
       </div>
     </li>
   
