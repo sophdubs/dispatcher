@@ -6,6 +6,7 @@ import New from './components/New';
 import Edit from './components/Edit';
 import Header from './components/Header';
 import AvailabilityForm from './components/AvailabilityForm';
+import AvailabilityDetails from './components/AvailabilityDetails';
 import { GlobalContext } from "../src/GlobalContext";
 import { getCurrentWeek } from "./helpers/helpers";
 
@@ -61,6 +62,7 @@ function App() {
         <New/>
         <Edit/>
         <AvailabilityForm />
+        <AvailabilityDetails />
       </GlobalContext.Provider>
     </div>
   );

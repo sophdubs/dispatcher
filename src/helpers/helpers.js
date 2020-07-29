@@ -1,5 +1,6 @@
 import React from "react";
 import Task from "../components/Task";
+import DriverAvailability from "../components/DriverAvailability";
 
 const generateHourColumn = () => {
   const column = [];
@@ -129,7 +130,7 @@ const generateWeekOptions = () => {
   let options = [];
   let i = getCurrentWeek();
   for (i; i <= 52; i++) {
-  options.push(<option value={`Week${i}`}>{i}</option>)
+  options.push(<option value={i}>{i}</option>)
   }
   return options;
 }
@@ -146,4 +147,38 @@ const generateAllTimeOptions = () => {
   return options;
 }
 
-export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask, getCurrentWeek, generateCompatibleStartTimeOptions, generateWeekOptions, generateDayOptions, generateAllTimeOptions }
+const generateDriverDetails = (state, driver) => {
+  let tasks = {};
+  if (state.checkAvailabilityTask) {
+    tasks = fetchDayTasksForDriver(state.schedule, state.checkAvailabilityTask.week, state.checkAvailabilityTask.day, driver);
+  }
+  return <DriverAvailability driver={driver} tasks={tasks} />
+}
+
+const findConflictingTasks = (state, tasks) => {
+  const conflicts = [];
+  if(state.checkAvailabilityTask) {
+    const startTime = state.checkAvailabilityTask.start_time;
+    const endTime = state.checkAvailabilityTask.end_time;
+    for (const [time, task] of Object.entries(tasks)) {
+      if ((task.start_time >= startTime && task.start_time <= endTime) || (task.end_time >= startTime && task.end_time <= endTime)) {
+        conflicts.push(time);
+      }
+    }
+  }
+  return conflicts;
+};
+
+const generateTaskListItems = (tasks, conflictingTasks) => {
+  const listItems = [];
+  for (const task of Object.values(tasks)) {
+    listItems.push(<li className={conflictingTasks.includes(task.startTime) ? "details-task conflict" : "details-task"}>
+      <h1>{task.task}</h1>
+      <p>{task.location}</p>
+      <p>{`${parseTimeString(task.start_time)}-${parseTimeString(task.end_time)}`}</p>
+    </li>)
+  }
+  return listItems;
+}
+
+export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask, getCurrentWeek, generateCompatibleStartTimeOptions, generateWeekOptions, generateDayOptions, generateAllTimeOptions, generateDriverDetails, findConflictingTasks, generateTaskListItems }
