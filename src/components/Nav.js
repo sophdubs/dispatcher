@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
+import { downloadCSV } from "../helpers/downloadCSV";
 
 export default function Nav() {
   const { state, setState } = useContext(GlobalContext);
@@ -16,6 +17,10 @@ export default function Nav() {
 
   const setDriver = (driver) => {
     setState({...state, driver});
+  }
+
+  const onClickDownload = (numDays) => {
+    downloadCSV(numDays, state.schedule[`driver${state.driver}`]);
   }
 
   return (
@@ -45,11 +50,11 @@ export default function Nav() {
                 Download
               </a>
               <ul className="dropdown-menu">
-                <li className="dropdown-item">2 days</li>
-                <li className="dropdown-item">4 days</li>
-                <li className="dropdown-item">7 days</li>
-                <li className="dropdown-item">14 days</li>
-                <li className="dropdown-item">28 days</li>              
+                <li className="dropdown-item" onClick={()=>onClickDownload(2)}>2 days</li>
+                <li className="dropdown-item" onClick={()=>onClickDownload(4)}>4 days</li>
+                <li className="dropdown-item" onClick={()=>onClickDownload(7)}>7 days</li>
+                <li className="dropdown-item" onClick={()=>onClickDownload(14)}>14 days</li>
+                <li className="dropdown-item" onClick={()=>onClickDownload(28)}>28 days</li>              
               </ul>
           </div>
         </div>
