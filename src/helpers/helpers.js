@@ -105,8 +105,7 @@ const wipeSelectedFields = (state, setState) => {
   const day = null;
   const selectedTimeSlot = null;
   const selectedTask = null;
-  const checkAvailabilityTask = {};
-  setState({...state, day, selectedTimeSlot, selectedTask, checkAvailabilityTask});
+  setState({...state, day, selectedTimeSlot, selectedTask});
 };
 
 const fetchSelectedTask = (day, week, driver, selectedTimeSlot, state) => {
