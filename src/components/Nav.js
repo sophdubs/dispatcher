@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
-import logo from "../logo.png";
-
 
 export default function Nav() {
   const { state, setState } = useContext(GlobalContext);

@@ -125,4 +125,25 @@ const getCurrentWeek = () => {
   return Math.ceil((((now - oneJan) / 86400000) + oneJan.getDay()+1)/7);
 }
 
-export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask, getCurrentWeek, generateCompatibleStartTimeOptions }
+const generateWeekOptions = () => {
+  let options = [];
+  let i = getCurrentWeek();
+  for (i; i <= 52; i++) {
+  options.push(<option value={`Week${i}`}>{i}</option>)
+  }
+  return options;
+}
+
+const generateDayOptions = () => {
+  return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(day => <option value={day}>{day}</option>)
+}
+
+const generateAllTimeOptions = () => {
+  const options = [];
+  for (let i = 0; i <= 24; i++) {
+    options.push(<option value={i}>{parseTimeString(i)}</option>)
+  }
+  return options;
+}
+
+export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask, getCurrentWeek, generateCompatibleStartTimeOptions, generateWeekOptions, generateDayOptions, generateAllTimeOptions }

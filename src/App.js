@@ -5,6 +5,7 @@ import Week from './components/Week';
 import New from './components/New';
 import Edit from './components/Edit';
 import Header from './components/Header';
+import AvailabilityForm from './components/AvailabilityForm';
 import { GlobalContext } from "../src/GlobalContext";
 import { getCurrentWeek } from "./helpers/helpers";
 
@@ -15,6 +16,7 @@ function App() {
     driver: 1,
     selectedTimeSlot: null,
     selectedTask: null,
+    checkAvailabilityTask: null,
     week: week,
     schedule: {
       driver1: {
@@ -58,6 +60,7 @@ function App() {
         <Week/>
         <New/>
         <Edit/>
+        <AvailabilityForm />
       </GlobalContext.Provider>
     </div>
   );
