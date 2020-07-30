@@ -18,6 +18,10 @@ export default function Edit() {
       return;
     }
 
+    // Delete old task
+    deleteTask(state, setState);
+
+    
     const newTask = {
       ...state.selectedTask, 
       end_time: endTime,
@@ -25,14 +29,13 @@ export default function Edit() {
       task
     }
 
-
-    // Delete old task
-    deleteTask(state, setState);
     // Select current time slot
-    setState({...state, time: newTask.start_time});
+    setState({...state, time: startTime});
     // Add new task
     addTaskToSchedule(newTask, state, setState);
-    // Clear selected task, dat, and time slot
+
+    
+    // Clear selected task, date, and time slot
     wipeSelectedFields(state, setState);
     // Toggle form close
     $('#editTaskForm').modal('hide');

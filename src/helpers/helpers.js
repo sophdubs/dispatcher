@@ -101,16 +101,16 @@ const addTaskToSchedule = (newTask, state, setState) => {
   setState(state => {
     if (state.schedule[`driver${state.driver}`][`Week${state.week}`]) {
       if(state.schedule[`driver${state.driver}`][`Week${state.week}`][`${state.day}`]) {
-        state.schedule[`driver${state.driver}`][`Week${state.week}`][`${state.day}`][`${state.selectedTimeSlot}`] = newTask;
+        state.schedule[`driver${state.driver}`][`Week${state.week}`][`${state.day}`][`${newTask.start_time}`] = newTask;
       } else {
         state.schedule[`driver${state.driver}`][`Week${state.week}`][`${state.day}`] = {
-          [`${state.selectedTimeSlot}`]: newTask
+          [`${newTask.start_time}`]: newTask
         }
       }
     } else {
       state.schedule[`driver${state.driver}`][`Week${state.week}`] = {
         [`${state.day}`]: {
-          [`${state.selectedTimeSlot}`]: newTask
+          [`${newTask.start_time}`]: newTask
         }
       }
     }
