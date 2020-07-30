@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
-import { findConflictingTasks, generateTaskListItems, deleteConflictingTasks, createNewTask, addTaskToSchedule, wipeSelectedFields } from "../helpers/helpers";
+import { findConflictingTasks, generateTaskListItems, deleteConflictingTasks, addTaskToSchedule, wipeSelectedFields } from "../helpers/helpers";
 import $ from 'jquery';
 
 export default function DriverAvailability(props) {
