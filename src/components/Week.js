@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../GlobalContext";
+import React from "react";
 import Day from "./Day";
 import { generateHourColumn } from "../helpers/helpers";
 
 export default function Week(props) {
-  const { state, setState } = useContext(GlobalContext);
 
   const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(weekday => <Day day={weekday}/>)
   const hourColumn = generateHourColumn();
