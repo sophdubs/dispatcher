@@ -101,7 +101,6 @@
   text-align: center;
   margin: 2vh auto;
   margin-right: 4vw;
-  
 }
 
 .hour-column {
@@ -283,5 +282,22 @@ li .task {
   flex-direction: column;
   justify-content: space-between;
 }
+
+/* FORM STYLES: */
+.edit-buttons {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-around;
+}
+
+.edit-buttons button {
+  width: 10vw;
+}
+
+.edit-form .input-group-text {
+  width: 8vw;
+}
+
+
 
 

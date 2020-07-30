@@ -64,7 +64,7 @@ export default function Edit() {
             </button>
           </div>
           <div class="modal-body">
-            <form className="form" onSubmit={onFormSubmit}>
+            <form className="form edit-form" onSubmit={onFormSubmit}>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="driver">Driver</span>
@@ -118,9 +118,10 @@ export default function Edit() {
                   </div>
                   <input type="text" class="form-control location-input" placeholder="enter city" name="location" onChange={onLocationChange} value={state.selectedTask ? state.selectedTask.location : ""}></input>
                 </div>
-                <button type="button" class="btn btn-danger" onClick={onDelete}>Delete</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-secondary">Save</button>
+                <div className="edit-buttons">
+                  <button type="button" class="btn btn-danger" onClick={onDelete}>Delete Task</button>
+                  <button type="submit" class="btn btn-secondary">Save Changes</button>
+                </div>
             </form>
           </div>
         </div>
