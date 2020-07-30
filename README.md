@@ -1,5 +1,6 @@
 # Dispatcher
 
+![dashboard-picture](https://s7.gifyu.com/images/mainfe080041f8bc8468.png)
 ## Poject Description
 This application was built to organize the movement of trucking resources and personnel. It allows a dispatcher manage pickup, dropoff and other tasks of multiple drivers with ease.
 
@@ -11,7 +12,7 @@ This application was built to organize the movement of trucking resources and pe
 - Dispatcher can delete tasks
 - Dispatcher is able to select one of 3 drivers from a drop down to view the specified driver's timetable
 - Dispatcher can download a .csv file outlining a specific driver's tasks for a given time-frame. Valid time frames for which the dispatcher can generate a driver report are: 2, 4, 7, 14, and 28 days. 
-- ___Please checkout ```FEATURES.md``` to see a full list of bonus features___
+- Please checkout ```FEATURES.md``` to see a full list of bonus features
 
 ## Setup
 1. Fork and clone this repo
