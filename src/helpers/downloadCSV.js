@@ -9,7 +9,7 @@ const headers = [
   {label: "Other", key: "other"}
 ];
 
-const downloadCSV = (numDays, schedule) => {
+const fetchData = (numDays, schedule) => {
   const data = [];
 
   let date = getFirstDayOfCurrentYear();
@@ -21,7 +21,7 @@ const downloadCSV = (numDays, schedule) => {
     // Adjust date
     date = addDaysToDate(date, numDays);
   }
-  console.log(data);
+  return data;
 }
 
 const generateRow = (counter, date, numDays, schedule) => {
@@ -75,5 +75,5 @@ const addDaysToDate = (date, numDays) => {
   return new Date(newDate);
 }
 
-export { downloadCSV }
+export { fetchData, headers }
 
