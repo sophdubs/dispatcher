@@ -1,56 +1,57 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
-import { generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, wipeSelectedFields, deleteTask, generateCompatibleStartTimeOptions, validateForm, generateAvailableTimeOptions } from "../helpers/helpers";
+import { addTaskToSchedule, wipeSelectedFields, deleteTask, validateForm, generateAvailableTimeOptions } from "../helpers/helpers";
 import $ from 'jquery';
 
 export default function Edit() {
   const { state, setState } = useContext(GlobalContext); 
 
   const onFormSubmit = (e) => {
+    // prevent default form submission
     e.preventDefault();
+    // grab values from form
     const endTime = e.target['end-time'].value;
     const startTime = e.target['start-time'].value;
     const task = e.target.task.value;
-    
+    // Returns a string with an error if start time < end time or if fields are missing from the form
     const error = validateForm(startTime, endTime, state.selectedTask.location);
     if (error) {
       alert(error);
       return;
     }
-
-    // Delete old task
+    // Deletes task from state.schedule
     deleteTask(state, setState);
-
-    
+    // Create new task
     const newTask = {
       ...state.selectedTask, 
       end_time: endTime,
       start_time: startTime,
       task
     }
-
     // Select current time slot
     setState({...state, time: startTime});
     // Add new task
     addTaskToSchedule(newTask, state, setState);
-
-    
-    // Clear selected task, date, and time slot
+    // Clears selected task, date, and time slot
     wipeSelectedFields(state, setState);
     // Toggle form close
     $('#editTaskForm').modal('hide');
   }
 
   const onDelete = (e) => {
+    // Deletes task from state.schedule
     deleteTask(state, setState);
+    // Update state 
     const day = null;
     const selectedTimeSlot = null;
     const selectedTask = null;
     setState({...state, day, selectedTimeSlot, selectedTask});
+    // Toggle form close
     $('#editTaskForm').modal('hide');
   }
 
   const onLocationChange = (e) => {
+    // controlled form input updates state onChange
     const selectedTask = {
       ...state.selectedTask, 
       location: e.target.value
@@ -58,13 +59,9 @@ export default function Edit() {
     setState({...state, selectedTask});
   }
 
-  const endOptions = generateCompatibleEndTimeOptions(state);
-  const startOptions = generateCompatibleStartTimeOptions(state);
-
+  // Generates a list of earlier and later times from current start time that do not conlfict with any other existing tasks
   const availableTimeOptions = generateAvailableTimeOptions(state);
 
-
- 
   return (
     <div class="modal fade" id="editTaskForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
       <div class="modal-dialog" role="document">
