@@ -20,10 +20,6 @@ export default function Nav() {
     setState({...state, driver});
   }
 
-  // const onClickDownload = (numDays) => {
-  //   downloadCSV(numDays, state.schedule[`driver${state.driver}`]);
-  // }
-
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="collapse navbar-collapse d-flex justify-content-between">
@@ -51,11 +47,11 @@ export default function Nav() {
                 Download
               </a>
               <ul className="dropdown-menu">
-                <li className="dropdown-item"><CSVLink headers={headers} data={fetchData(2, state.schedule[`driver${state.driver}`])}>2 days</CSVLink></li>
-                <li className="dropdown-item"><CSVLink headers={headers} data={fetchData(4, state.schedule[`driver${state.driver}`])}>4 days</CSVLink></li>
-                <li className="dropdown-item"><CSVLink headers={headers} data={fetchData(7, state.schedule[`driver${state.driver}`])}>7 days</CSVLink></li>
-                <li className="dropdown-item"><CSVLink headers={headers} data={fetchData(14, state.schedule[`driver${state.driver}`])}>14 days</CSVLink></li>
-                <li className="dropdown-item"><CSVLink headers={headers} data={fetchData(28, state.schedule[`driver${state.driver}`])}>28 days</CSVLink></li>           
+                <li className="dropdown-item csv-link"><CSVLink headers={headers} data={fetchData(2, state.schedule[`driver${state.driver}`])}>2 days</CSVLink></li>
+                <li className="dropdown-item csv-link"><CSVLink headers={headers} data={fetchData(4, state.schedule[`driver${state.driver}`])}>4 days</CSVLink></li>
+                <li className="dropdown-item csv-link"><CSVLink headers={headers} data={fetchData(7, state.schedule[`driver${state.driver}`])}>7 days</CSVLink></li>
+                <li className="dropdown-item csv-link"><CSVLink headers={headers} data={fetchData(14, state.schedule[`driver${state.driver}`])}>14 days</CSVLink></li>
+                <li className="dropdown-item csv-link"><CSVLink headers={headers} data={fetchData(28, state.schedule[`driver${state.driver}`])}>28 days</CSVLink></li>           
               </ul>
           </div>
         </div>

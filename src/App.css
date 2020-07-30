@@ -53,6 +53,14 @@
   color: white;
 }
 
+.csv-link a {
+  color: black;
+}
+
+.csv-link a:hover {
+  text-decoration: none;
+}
+
 .navbar .dropdown-item:hover {
   cursor: pointer;
   background: #1f398f69;

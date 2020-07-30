@@ -19,7 +19,7 @@ const fetchData = (numDays, schedule) => {
 
     data.push(row);
     // Adjust date
-    date = addDaysToDate(date, numDays);
+    date = addDaysToDate(date, numDays - 1);
   }
   return data;
 }
