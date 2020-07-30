@@ -219,7 +219,6 @@ const deleteConflictingTasks = (setState, driver, week, day, conflictingTasks) =
 }
 
 const validateForm = (startTime, endTime, location) => {
-  console.log({startTime, endTime, location})
   if (!(startTime.toString)|| !(endTime.toString) || !location) {
     return "Please fill in all form fields";
   }
