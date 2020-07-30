@@ -5,7 +5,7 @@ import DriverAvailability from "../components/DriverAvailability";
 const generateHourColumn = () => {
   const column = [];
   for (let i = 0; i < 24; i++) {
-  column.push(<li class="hour-label"><p>{i > 12 ? i % 12 + 'pm' : i + 'am'}</p></li>);
+  column.push(<li class="hour-label"><p>{parseTimeString(i)}</p></li>);
   }
   return column;
 }
