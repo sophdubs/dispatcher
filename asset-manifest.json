@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/sophdubs/dispatcher/static/css/main.0845ff2f.chunk.css",
+    "main.js": "/sophdubs/dispatcher/static/js/main.69eb4623.chunk.js",
+    "main.js.map": "/sophdubs/dispatcher/static/js/main.69eb4623.chunk.js.map",
+    "runtime-main.js": "/sophdubs/dispatcher/static/js/runtime-main.42f4a60d.js",
+    "runtime-main.js.map": "/sophdubs/dispatcher/static/js/runtime-main.42f4a60d.js.map",
+    "static/js/2.b0820f03.chunk.js": "/sophdubs/dispatcher/static/js/2.b0820f03.chunk.js",
+    "static/js/2.b0820f03.chunk.js.map": "/sophdubs/dispatcher/static/js/2.b0820f03.chunk.js.map",
+    "index.html": "/sophdubs/dispatcher/index.html",
+    "precache-manifest.14b928a8b5eb4597e268cb3c83b15f29.js": "/sophdubs/dispatcher/precache-manifest.14b928a8b5eb4597e268cb3c83b15f29.js",
+    "service-worker.js": "/sophdubs/dispatcher/service-worker.js",
+    "static/css/main.0845ff2f.chunk.css.map": "/sophdubs/dispatcher/static/css/main.0845ff2f.chunk.css.map",
+    "static/js/2.b0820f03.chunk.js.LICENSE.txt": "/sophdubs/dispatcher/static/js/2.b0820f03.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.42f4a60d.js",
+    "static/js/2.b0820f03.chunk.js",
+    "static/css/main.0845ff2f.chunk.css",
+    "static/js/main.69eb4623.chunk.js"
+  ]
+}
