@@ -75,5 +75,4 @@ const addDaysToDate = (date, numDays) => {
   return new Date(newDate);
 }
 
-export { fetchData, headers }
-
+export { fetchData, headers };
