@@ -12,5 +12,3 @@ Fig 2. If the dispatcher wants to check the availability for a given timeslot on
 ![skip-to-week](https://s7.gifyu.com/images/skip-to-week.gif)
 Fig 3. In order to avoid repeatedly clicking on the left and right arrows to get to a given week, the dispatcher can use this feature to skip to a specified week (1-52). The dispatcher can also use the __current week__ to get back to the current week (which is dynamically calculated, not hard coded).
 
-## App deployment
-You can find a live version of the app here:
