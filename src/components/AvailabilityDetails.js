@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
 import { generateDriverDetails } from "../helpers/helpers";
-import $ from 'jquery';
 
 export default function AvailabilityDetails() {
   const { state, setState } = useContext(GlobalContext); 
