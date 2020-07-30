@@ -3,7 +3,7 @@ import { GlobalContext } from "../GlobalContext";
 import { generateDriverDetails } from "../helpers/helpers";
 
 export default function AvailabilityDetails() {
-  const { state, setState } = useContext(GlobalContext); 
+  const { state } = useContext(GlobalContext); 
 
   const driverDetails = [1, 2, 3].map(driver => generateDriverDetails(state, driver));
   
