@@ -1,4 +1,5 @@
 import React from 'react';
+import { parseTimeString } from "../helpers/helpers";
 
 export default function Task(props) {
   const duration = props.end_time - props.start_time;
@@ -7,7 +8,7 @@ export default function Task(props) {
       <div>
         <h4>{props.task}</h4>
         <p>{props.location}</p>
-        <p>{props.start_time > 12 ? `${props.start_time % 12}pm` :`${props.start_time}am`} - {props.end_time > 12 ? `${props.end_time % 12}pm` : `${props.end_time}am`}</p>
+        <p>{`${parseTimeString(props.start_time)}-${parseTimeString(props.end_time)}`}</p>
       </div>
     </li>
   );

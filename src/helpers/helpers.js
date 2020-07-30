@@ -5,7 +5,7 @@ import DriverAvailability from "../components/DriverAvailability";
 const generateHourColumn = () => {
   const column = [];
   for (let i = 0; i < 24; i++) {
-  column.push(<li class="hour-label"><p>{parseTimeString(i)}</p></li>);
+  column.push(<li key={i} class="hour-label"><p>{parseTimeString(i)}</p></li>);
   }
   return column;
 }
@@ -18,7 +18,7 @@ const generateDaySchedule = (tasks, onClickTimeSlot, onClickTask) => {
       schedule.push(<Task onClickTask={onClickTask} start_time={start_time} end_time={end_time} task={task} location={location}/>);
       i += end_time - start_time - 1;
     } else {
-      schedule.push(<li class="time-slot" data-time={i} data-toggle="modal" data-target="#newTaskForm" onClick={onClickTimeSlot}>+</li>);
+      schedule.push(<li key={i} class="time-slot" data-time={i} data-toggle="modal" data-target="#newTaskForm" onClick={onClickTimeSlot}>+</li>);
     }
   }
   return schedule;
@@ -172,7 +172,6 @@ const findConflictingTasks = (state, tasks) => {
 const generateTaskListItems = (tasks, conflictingTasks) => {
   const listItems = [];
   for (const task of Object.values(tasks)) {
-    console.log();
     listItems.push(<li className={conflictingTasks.includes(`${task.start_time}`) ? "details-task conflict" : "details-task"}>
       <h1>{task.task}</h1>
       <p>{task.location}</p>
