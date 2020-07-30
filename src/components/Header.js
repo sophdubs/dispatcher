@@ -6,6 +6,7 @@ import $ from 'jquery';
 export default function Header() {
   const { state, setState } = useContext(GlobalContext); 
   
+  // Skips to a given week
   const onClickSkip = (e) => {
     const week = parseInt(document.querySelector('.skip-input').value);
     if (week && week >= 1 && week <= 52) {
@@ -14,11 +15,13 @@ export default function Header() {
     document.querySelector('.skip-input').value="";
   }
 
+  // Returns to current week
   const onClickCurrent = (e) => {
     const week = getCurrentWeek();
     setState({...state, week});
   }
 
+  // Toggles availability form open
   const onClickAvailability = (e) => {
     $('#availabilityForm').modal('show');
   }
