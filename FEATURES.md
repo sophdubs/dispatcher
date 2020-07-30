@@ -11,3 +11,13 @@ Fig 2. If the dispatcher wants to check the availability for a given timeslot on
 ## Skip to Week/Back to Current Week
 In order to avoid repeatedly clicking on the left and right arrows to get to a given week, the dispatcher can use this feature to skip to a specified week (1-52). The dispatcher can also use the __current week__ feature to get back to the current week (which is dynamically calculated, not hard coded).
 
+## Deployment
+You can find a live version of my project hosted on github pages [here](https://sophdubs.github.io/dispatcher/)
+
+## Known Issues
+Overall, I am very happy with the functionality and features of my app. 
+However, due to to my current enrollement in a full time web development bootcamp, I was unable to address certain issues in my project. Here is a list of things I wish I could have done:
+- Thoroughly test all of the functions in my  ```helpers.js``` file
+- Refactor the functions in ```helper.js```
+- Implement better state management
+
