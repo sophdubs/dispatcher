@@ -6,16 +6,19 @@ import { fetchData, headers } from "../helpers/downloadCSV";
 export default function Nav() {
   const { state, setState } = useContext(GlobalContext);
 
+  // Increment week in state on right arrow click
   const incrementWeek = () => {
     const week = state.week === 52 ? 1 : state.week + 1;
     setState({...state, week})
   }
 
+  // Decrement week in state on right arrow click
   const decrementWeek = () => {
     const week = state.week === 1 ? 52 : state.week - 1;
     setState({...state, week});
   }
 
+  // Set driver in state to delected driver from drop down
   const setDriver = (driver) => {
     setState({...state, driver});
   }
@@ -33,6 +36,7 @@ export default function Nav() {
         </div>
         <div className="nav-item d-flex flex-row one-third dropdowns">
           <div className="dropdown driver-dd">
+            {/* eslint-disable-next-line */}
             <a href="" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">
               Driver {state.driver}
             </a>
@@ -43,6 +47,7 @@ export default function Nav() {
             </ul>
           </div>
           <div className="dropdown download-dd">
+              {/* eslint-disable-next-line */}
               <a href="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Download
               </a>
