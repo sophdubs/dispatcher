@@ -162,6 +162,19 @@
   cursor: pointer;
 }
 
+.buffer {
+  color: white;
+}
+
+li .buffer {
+  outline: none;
+}
+
+.buffer:hover {
+  background: white;
+  color: white;
+}
+
 /* TASK STYLES: */
 li .task {
   position: relative;
