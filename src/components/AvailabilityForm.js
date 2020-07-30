@@ -46,7 +46,7 @@ export default function AvailabilityForm() {
             </button>
           </div>
           <div class="modal-body">
-            <form className="form" onSubmit={onCheckAvailability}>
+            <form className="form availability-form" onSubmit={onCheckAvailability}>
                 
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
@@ -104,8 +104,10 @@ export default function AvailabilityForm() {
                   <input type="text" class="form-control location-input" placeholder="enter city" name="location"/>
                 </div>
 
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-secondary">Check Availability</button>
+                <div className="availability-buttons">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-secondary">Check Availability</button>
+                </div>
             </form>
           </div>
         </div>

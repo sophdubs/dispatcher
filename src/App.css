@@ -298,6 +298,34 @@ li .task {
   width: 8vw;
 }
 
+.new-buttons {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-around;
+}
+
+.new-buttons button {
+  width: 10vw;
+}
+
+.new-form .input-group-text {
+  width: 8vw;
+}
+
+.availability-buttons {
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-around;
+}
+
+.availability-buttons button {
+  width: 12vw;
+}
+
+.availability-form .input-group-text {
+  width: 8vw;
+}
+
 
 
 

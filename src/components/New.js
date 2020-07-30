@@ -32,7 +32,7 @@ export default function New() {
             </button>
           </div>
           <div class="modal-body">
-            <form className="form" onSubmit={onFormSubmit}>
+            <form className="form new-form" onSubmit={onFormSubmit}>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="driver">Driver</span>
@@ -82,8 +82,10 @@ export default function New() {
                   </div>
                   <input type="text" class="form-control" placeholder="enter city" name="location"></input>
                 </div>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-secondary">Save</button>
+                <div className="new-buttons">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-secondary">Save</button>
+                </div>
             </form>
           </div>
         </div>
