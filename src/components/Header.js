@@ -28,10 +28,10 @@ export default function Header() {
   
   return (
     <header>
-      <ul class="header">
+      <ul className="header">
         <li onClick={onClickCurrent}><span>{`<< `}</span>{`Current week`}</li>
         <li onClick={onClickAvailability}>Check Availability</li>
-        <li onClick={onClickSkip}>{`Skip to week `}<input class="skip-input" type="text"></input>{`>>`}</li>
+        <li onClick={onClickSkip}>{`Skip to week `}<input className="skip-input" type="text"></input>{`>>`}</li>
       </ul>
     </header>
   );

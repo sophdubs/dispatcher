@@ -32,53 +32,53 @@ export default function New() {
   const options = generateCompatibleEndTimeOptions(state);
 
   return (
-    <div class="modal fade" id="newTaskForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">New Task</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <div className="modal fade" id="newTaskForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div className="modal-dialog" role="document">
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title">New Task</h5>
+            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div className="modal-body">
             <form className="form new-form" onSubmit={onFormSubmit}>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="driver">Driver</span>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="driver">Driver</span>
                   </div>
-                  <input type="text" class="form-control"  value={state.driver}></input>
+                  <input type="text" className="form-control"  value={state.driver}></input>
                 </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="week">Week</span>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="week">Week</span>
                   </div>
-                  <input type="text" class="form-control" value={state.week}></input>
+                  <input type="text" className="form-control" value={state.week}></input>
                 </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="day">Day</span>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="day">Day</span>
                   </div>
-                  <input type="text" class="form-control" value={state.day}></input>
+                  <input type="text" className="form-control" value={state.day}></input>
                 </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="start-time">Start Time</span>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="start-time">Start Time</span>
                   </div>
-                  <input type="text" class="form-control" value={parseTimeString(state.selectedTimeSlot)}></input>
+                  <input type="text" className="form-control" value={parseTimeString(state.selectedTimeSlot)}></input>
                 </div>
               
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text" for="end-time">End Time</label>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <label className="input-group-text" for="end-time">End Time</label>
                   </div>
-                  <select class="custom-select form-control" id="end-time">
+                  <select className="custom-select form-control" id="end-time">
                     {options}
                   </select>
                 </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <label class="input-group-text" for="task">Task</label>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <label className="input-group-text" for="task">Task</label>
                   </div>
                   <select className="custom-select form-control" id="task">
                     <option selected>Pickup Goods</option>
@@ -86,15 +86,15 @@ export default function New() {
                     <option>Other</option>
                   </select>
                 </div>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="location">Location</span>
+                <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                    <span className="input-group-text" id="location">Location</span>
                   </div>
-                  <input type="text" class="form-control" placeholder="enter city" name="location"></input>
+                  <input type="text" className="form-control" placeholder="enter city" name="location"></input>
                 </div>
                 <div className="new-buttons">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button type="submit" class="btn btn-secondary">Save</button>
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                  <button type="submit" className="btn btn-secondary">Save</button>
                 </div>
             </form>
           </div>

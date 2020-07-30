@@ -8,9 +8,9 @@ export default function Week(props) {
   const hourColumn = generateHourColumn();
   return (
     <div className="week">
-      <ul class="list-inline">
-        <li class="list-inline-item">
-          <ul class="hour-column">
+      <ul className="list-inline">
+        <li className="list-inline-item">
+          <ul className="hour-column">
             {hourColumn}
           </ul>
         </li>

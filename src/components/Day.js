@@ -35,9 +35,9 @@ export default function Day(props) {
   
   return (
     <>
-    <li class="list-inline-item">
-      <ul class="week-table">
-        <li class="day-name">{props.day}</li>
+    <li className="list-inline-item">
+      <ul className="week-table">
+        <li className="day-name">{props.day}</li>
         { daySchedule }
       </ul>
     </li>

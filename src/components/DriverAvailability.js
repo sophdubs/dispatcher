@@ -39,7 +39,7 @@ export default function DriverAvailability(props) {
   }
 
   return (
-    <li class="driver-details">
+    <li className="driver-details">
       <div>
         <h1>{`Driver${props.driver}`}</h1>
         { conflictingTasks.length === 0 ?
@@ -50,7 +50,7 @@ export default function DriverAvailability(props) {
         <h3>{`${Object.keys(props.tasks).length} tasks scheduled`}</h3>
       </div>
    
-      <ul class="driver-task-list">
+      <ul className="driver-task-list">
         {taskListItems}
       </ul>
  

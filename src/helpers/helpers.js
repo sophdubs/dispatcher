@@ -5,7 +5,7 @@ import DriverAvailability from "../components/DriverAvailability";
 const generateHourColumn = () => {
   const column = [];
   for (let i = 0; i <= 24; i++) {
-  column.push(<li key={i} class="hour-label"><p>{parseTimeString(i)}</p></li>);
+  column.push(<li key={i} className="hour-label"><p>{parseTimeString(i)}</p></li>);
   }
   return column;
 }
@@ -18,10 +18,10 @@ const generateDaySchedule = (tasks, onClickTimeSlot, onClickTask) => {
       schedule.push(<Task onClickTask={onClickTask} start_time={start_time} end_time={end_time} task={task} location={location}/>);
       i += end_time - start_time - 1;
     } else {
-      schedule.push(<li key={i} class="time-slot" data-time={i} data-toggle="modal" data-target="#newTaskForm" onClick={onClickTimeSlot}>+</li>);
+      schedule.push(<li key={i} className="time-slot" data-time={i} data-toggle="modal" data-target="#newTaskForm" onClick={onClickTimeSlot}>+</li>);
     }
   }
-  schedule.push(<li key={25} class="time-slot buffer" data-time={25}>+</li>)
+  schedule.push(<li key={25} className="time-slot buffer" data-time={25}>+</li>)
   return schedule;
 }
 
