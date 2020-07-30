@@ -5,27 +5,30 @@ import $ from 'jquery';
 
 export default function New() {
   const { state, setState } = useContext(GlobalContext); 
-
+  
   const onFormSubmit = (e) => {
+    // Prevent default form submission
     e.preventDefault();
-    
+    // Extract values from form
     const endTime = e.target['end-time'].value;
     const task = e.target.task.value;
     const location = e.target.location.value;
-    
+    // Validate form inputs
     const error = validateForm(state.selectedTimeSlot, endTime, location);
     if (error) {
       alert(error);
       return;
     }
-    
+    // Create new task
     const newTask = createNewTask(endTime, task, state, location);
-
+    // Add task to state.schedule
     addTaskToSchedule(newTask, state, setState);
     wipeSelectedFields(state, setState);
+    // Toggle form close
     $('#newTaskForm').modal('hide');
   }
 
+  // Generates array of options for non-conflicting end times 
   const options = generateCompatibleEndTimeOptions(state);
 
   return (
