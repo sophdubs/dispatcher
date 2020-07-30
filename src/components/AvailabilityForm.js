@@ -6,12 +6,15 @@ import $ from 'jquery';
 export default function AvailabilityForm() {
   const { state, setState } = useContext(GlobalContext); 
 
+  // Generate dowpdown options for form
   const weekOptions = generateWeekOptions();
   const dayOptions = generateDayOptions();
   const allTimeOptions = generateAllTimeOptions();
 
   const onCheckAvailability = (e) => {
+    // Prevent default form submission
     e.preventDefault();
+    // Extract values from form
     const week = e.target['week'].value;
     const day = e.target['day'].value;
     const startTime = e.target['start-time'].value;
@@ -19,12 +22,14 @@ export default function AvailabilityForm() {
     const task = e.target['task'].value;
     const location = e.target['location'].value;
 
+    // Validate form. If missing fields or startTime >= endTime, validateForm returns an error string
     const error = validateForm(startTime, endTime, location);
     if (error) {
       alert(error);
       return;
     }
 
+    // Store tentative task details in state
     const checkAvailabilityTask = {
       week,
       day,
@@ -33,14 +38,14 @@ export default function AvailabilityForm() {
       task,
       location
     };
-
     setState({...state, checkAvailabilityTask});
+
+    // Toggle this form close
     $('#availabilityForm').modal('hide');
+    // Toggle availabilityDetails open
     $('#availabilityDetails').modal('show');
   }
 
-
- 
   return (
     <div class="modal fade" id="availabilityForm" tabindex="-1">
       <div class="modal-dialog" role="document">
