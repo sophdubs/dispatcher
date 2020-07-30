@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
-import { generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, wipeSelectedFields, createNewTask } from "../helpers/helpers";
+import { generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, wipeSelectedFields, createNewTask, validateForm } from "../helpers/helpers";
 import $ from 'jquery';
 
 export default function New() {
@@ -12,8 +12,15 @@ export default function New() {
     const endTime = e.target['end-time'].value;
     const task = e.target.task.value;
     const location = e.target.location.value;
-    const newTask = createNewTask(endTime, task, state, location);
     
+    const error = validateForm(state.selectedTimeSlot, endTime, location);
+    if (error) {
+      alert(error);
+      return;
+    }
+    
+    const newTask = createNewTask(endTime, task, state, location);
+
     addTaskToSchedule(newTask, state, setState);
     wipeSelectedFields(state, setState);
     $('#newTaskForm').modal('hide');

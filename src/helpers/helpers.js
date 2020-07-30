@@ -70,6 +70,33 @@ const generateCompatibleStartTimeOptions = (state) => {
   return options;
 }
 
+const generateAvailableTimeOptions = (state) => {
+  const options = [];
+  const todayTasks = fetchDayTasksForDriver(state.schedule, state.week, state.day, state.driver);
+
+  let earlierTask = 0;
+  for (let i = state.selectedTimeSlot - 1; i >= 0; i--) {
+    if (todayTasks[i]) {
+      earlierTask = todayTasks[i].end_time;
+      break;
+    }
+  }
+
+  let laterTask = 24
+  for (let i = parseInt(state.selectedTimeSlot) + 1; i < 24; i++) {
+    if (todayTasks[i]) {
+      laterTask = i;
+      break
+    }
+  }
+
+  while (earlierTask <= laterTask) {
+    options.push(<option value={earlierTask}>{parseTimeString(earlierTask)}</option>);
+    earlierTask ++;
+  }
+  return options;
+}
+
 const addTaskToSchedule = (newTask, state, setState) => {
   setState(state => {
     if (state.schedule[`driver${state.driver}`][`Week${state.week}`]) {
@@ -190,5 +217,14 @@ const deleteConflictingTasks = (setState, driver, week, day, conflictingTasks) =
   })
 }
 
+const validateForm = (startTime, endTime, location) => {
+  if (!startTime || !endTime || !location) {
+    return "Please fill in all form fields";
+  }
+  if (parseInt(endTime) <= parseInt(startTime)) {
+    return "End time must be after start time";
+  }
+}
 
-export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask, getCurrentWeek, generateCompatibleStartTimeOptions, generateWeekOptions, generateDayOptions, generateAllTimeOptions, generateDriverDetails, findConflictingTasks, generateTaskListItems, deleteConflictingTasks }
+
+export { generateDaySchedule, generateHourColumn, fetchDayTasksForDriver, generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, createNewTask, wipeSelectedFields, fetchSelectedTask, deleteTask, getCurrentWeek, generateCompatibleStartTimeOptions, generateWeekOptions, generateDayOptions, generateAllTimeOptions, generateDriverDetails, findConflictingTasks, generateTaskListItems, deleteConflictingTasks, validateForm, generateAvailableTimeOptions }

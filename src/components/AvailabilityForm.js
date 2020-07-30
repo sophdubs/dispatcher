@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
-import { generateWeekOptions, generateDayOptions, generateAllTimeOptions } from "../helpers/helpers";
+import { generateWeekOptions, generateDayOptions, generateAllTimeOptions, validateForm } from "../helpers/helpers";
 import $ from 'jquery';
 
 export default function AvailabilityForm() {
@@ -17,7 +17,13 @@ export default function AvailabilityForm() {
     const startTime = e.target['start-time'].value;
     const endTime = e.target['end-time'].value;
     const task = e.target['task'].value;
-    const location = e.target['location'].value
+    const location = e.target['location'].value;
+
+    const error = validateForm(startTime, endTime, location);
+    if (error) {
+      alert(error);
+      return;
+    }
 
     const checkAvailabilityTask = {
       week,

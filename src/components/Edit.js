@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../GlobalContext";
-import { generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, wipeSelectedFields, createNewTask, fetchSelectedTask, deleteTask, generateCompatibleStartTimeOptions } from "../helpers/helpers";
+import { generateCompatibleEndTimeOptions, parseTimeString, addTaskToSchedule, wipeSelectedFields, deleteTask, generateCompatibleStartTimeOptions, validateForm, generateAvailableTimeOptions } from "../helpers/helpers";
 import $ from 'jquery';
 
 export default function Edit() {
@@ -11,6 +11,12 @@ export default function Edit() {
     const endTime = e.target['end-time'].value;
     const startTime = e.target['start-time'].value;
     const task = e.target.task.value;
+    
+    const error = validateForm(startTime, endTime, state.selectedTask.location);
+    if (error) {
+      alert(error);
+      return;
+    }
 
     const newTask = {
       ...state.selectedTask, 
@@ -18,6 +24,7 @@ export default function Edit() {
       start_time: startTime,
       task
     }
+
 
     // Delete old task
     deleteTask(state, setState);
@@ -50,6 +57,8 @@ export default function Edit() {
 
   const endOptions = generateCompatibleEndTimeOptions(state);
   const startOptions = generateCompatibleStartTimeOptions(state);
+
+  const availableTimeOptions = generateAvailableTimeOptions(state);
 
 
  
@@ -89,8 +98,7 @@ export default function Edit() {
                     <label class="input-group-text" for="start-time">Start Time</label>
                   </div>
                   <select class="custom-select form-control" id="start-time">
-                    {startOptions}
-                    <option selected value={state.selectedTimeSlot}>{parseTimeString(state.selectedTimeSlot)}</option>
+                    {availableTimeOptions}
                   </select>
                 </div>
               
@@ -99,7 +107,7 @@ export default function Edit() {
                     <label class="input-group-text" for="end-time">End Time</label>
                   </div>
                   <select class="custom-select form-control" id="end-time">
-                    {endOptions}
+                    {availableTimeOptions}
                   </select>
                 </div>
                 <div class="input-group mb-3">
